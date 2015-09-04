@@ -43,20 +43,8 @@ public class WordUp {
   
   // setters
   // setArrayList, setRandomNumber, setPrintMessage
-//  public void setArrayList(int numMessages,ArrayList<String> messageListName) {
-//  public void setArrayList(String x) {
   public void setArrayList() {
     // set/put values into the array list
-//    numMessages = 3;
-//    for (int i = 1; i <= numMessages; i++) { // Start the count at 1 instead of 0.
-////      messageListName.add(getUserString()); // Add user input into array list. 
-//      messageListName.add("First");
-//      messageListName.add("Second");
-//      messageListName.add("Third");
-//    }
-//    this.arrayList.add(x);
-    this.arrayList.add("First");
-    this.arrayList.add("Second");
   }
   
   public void setRandomNumber() {
@@ -104,23 +92,21 @@ public class WordUp {
     int a = 0; // Lower bound is the first value. First index in an array list is always 0.
     int b = s - 1; // Upper bound is the size of the array list - 1.
     int r = (int) (Math.random() * (b - a + 1)) + a; // where a & b are the lower and upper bounds respectively.
-//    int r = (int) (Math.random() * (l.size() + 1)); // Simplified equation. Probably don't want to use this.
+    // int r = (int) (Math.random() * (l.size() + 1)); // Simplified equation. Probably don't want to use this.
     
     // print array list message
+    System.out.printf("Random message: %s (%s)%n",l.get(r),r);
     
     // debugging
     System.out.println("RESULTS");
     
-    int order = 1; // Counter for the numbered list.
+//    int order = 1; // Counter for the numbered list.
+    int order2 = 0;
     for (Object message : l) { // Enhanced for loop is more efficient here.
-      System.out.printf("%s. %s%n",String.valueOf(order++),message); // We're adding 1 to the order value to make this human-readable since the index starts at 0.
+//      System.out.printf("%s. %s%n",String.valueOf(order++),message); // We're adding 1 to the order value to make this human-readable since the index starts at 0.
+      System.out.printf("%s. %s%n",String.valueOf(order2++),message); // We're adding 1 to the order value to make this human-readable since the index starts at 0.
     }
-    
-//    System.out.println("Random number = " + r);
-    System.out.printf("Random message: %s (%s)%n",l.get(r),r);
-    
-//    System.out.printf("%s%n",arrayList.get(messageNumber));
-//    this.printMessage = null;
+    System.out.printf("Random number: %s (%s)%n",r,l.get(r));
   }
   
 }
