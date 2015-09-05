@@ -1,114 +1,195 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package word.up;
 
 import java.util.ArrayList;
 import java.util.Random;
 
 /**
- *
+ * Generates an array list & random number, then uses that number to print the corresponding value in the array list.
  * @author Smokie Lee
  */
 public class WordUp {
+  
+  // Variables
+  
   private final ArrayList arrayList;
   private Integer randomNumber;
   private String printMessage;
   
-  // constructors
+  // Constructors
+  
+  /**
+   * Create a new WordUp object with new array list.
+   */
   public WordUp() {
-//    this(null);
-//    this.arrayList = new ArrayList<>();
     this(new ArrayList<>());
   }
   
+  /**
+   * Create a new WordUp object with an existing array list.
+   * @param arrayList Name of array list.
+   */
   public WordUp(ArrayList arrayList) {
     this.arrayList = arrayList;
-    this.randomNumber = 5;
+    this.randomNumber = 0;
     this.printMessage = "";
-    arrayList.add("puppy");
-    arrayList.add("kitten");
-    arrayList.add("duckling");
-    arrayList.add("snakelet");
-    arrayList.add("larvae");
   }
   
-  // getters
-  // getArrayList, getRandomNumber, getPrintMessage
-  public ArrayList getArrayList() {
+  // Accessors
+  
+  /**
+   * Returns value of arrayList as an array.
+   * @return arrayList
+   */
+    public ArrayList getArrayList() {
     return arrayList;
   }
   
+  /**
+   * Returns the value of randomNumber.
+   * @return randomNumber
+   */
   public Integer getRandomNumber() {
     return randomNumber;
   }
   
+  /**
+   * Returns the value of printMessage.
+   * @return printMessage
+   */
   public String getPrintMessage() {
     return printMessage;
   }
   
-  // setters
-  // setArrayList, setRandomNumber, setPrintMessage
-  public void setArrayList() {
+  // Mutators
+  
+  /**
+   * Set array list values.
+   */
+    public void setArrayList() {
     setArrayList("");
   }
   
-  public void setArrayList(String message) {
+  /**
+   * Set array list values.
+   * @param word String to add as array list value.
+   */
+  public void setArrayList(String word) {
     // set/put values into the array list
-//    arrayList.set(1,"first");
-//    this.arrayList = arrayList.asList("One", "Two", "Three");
-    this.arrayList.add(message);
+    this.arrayList.add(word);
   }
   
-//public void add(Item i) {
-//
-//    itemsInGroceryList.add(i);
-//}
-  
+  /**
+   * Generate & set random number.
+   */
   public void setRandomNumber() {
     // set random number after computing it
     Random gen = new Random();
     this.randomNumber = gen.nextInt(this.arrayList.size());
   }
   
+  /**
+   * Set printMessage variable.
+   */
   public void setPrintMessage() {
-    this.printMessage = (String) arrayList.get(randomNumber); // Cast the object that is returned into String. There are other ways to do this, but this is simplest.
+    setPrintMessage(randomNumber);
   }
   
-  // other methods
-  public void randomNumber() {
+  /**
+   * Set printMessage variable.
+   * @param messageNumber Index number of array list value.
+   */
+  public void setPrintMessage(Integer messageNumber) {
+    this.printMessage = (String) arrayList.get(messageNumber); // Cast the object that is returned into String, since printMessage is a String variable.
+  }
+  
+  // Misc methods
+  
+  /**
+   * Generate & print a random number.
+   */
+    public void randomNumber() {
     setRandomNumber();
     System.out.printf("Number: %s%n",getRandomNumber());
   }
 
+  /**
+   * Print random message.
+   */
   public void randomMessage() {
-//    getPrintMessage();
-    setPrintMessage();
+    setPrintMessage(getRandomNumber());
     System.out.printf("Word: \t%s%n",getPrintMessage());
+  }
+  
+  /**
+   * Populate/generate the array list.
+   */
+  public void generateList() {
+    setArrayList("antling");
+    setArrayList("baby");
+    setArrayList("calf");
+    setArrayList("chick");
+    setArrayList("codling");
+    setArrayList("cria");
+    setArrayList("cub");
+    setArrayList("duckling");
+    setArrayList("elver");
+    setArrayList("fawn");
+    setArrayList("fledgling");
+    setArrayList("foal");
+    setArrayList("hake");
+    setArrayList("hatchling");
+    setArrayList("infant");
+    setArrayList("joey");
+    setArrayList("kit");
+    setArrayList("kitten");
+    setArrayList("larvae");
+    setArrayList("nymph");
+    setArrayList("pinkie");
+    setArrayList("puggle");
+    setArrayList("pup");
+    setArrayList("puppy");
+    setArrayList("pupae");
+    setArrayList("snakelet");
+    setArrayList("squab");
+    setArrayList("tadpole");
+  }
+
+  /**
+   * Introduce the user to the program.
+   */
+  public void welcome() {
+    System.out.printf("Welcome to the \"WordUp\" program. Let's print random words!%n");
+    System.out.printf("%n\t\tCreated by Smokie Lee");
+    System.out.printf("%n\t---------------------------------------%n%n");
+  }
+  
+  /**
+   * Thank the user.
+   */
+  public void thanks() {
+    System.out.printf("%n\t---------------------------------------%n");
+    System.out.printf("\t\tThanks for playing!%n");
   }
 
   /**
    * @param args the command line arguments
    */
   public static void main(String[] args) {
-    // create new object(s)
-//    ArrayList l = new ArrayList<>();
-//    WordUp w = new WordUp(l);
+    // Create new object.
     WordUp w = new WordUp();
+
+    // Welcome the user.
+    w.welcome();
     
-    // generate random number
+    // Generate the word list.
+    w.generateList();
+    
+    // Generate the random number.
     w.randomNumber();
     
-    // print word
-//    w.setPrintMessage();
-//    System.out.printf("Word: \t%s%n",w.getPrintMessage());
+    // Print the word from the list.
     w.randomMessage();
-    
-    // debugging
-    
-
+    w.thanks();
   }
   
 }
