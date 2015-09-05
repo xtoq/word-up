@@ -6,6 +6,7 @@
 package word.up;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  *
@@ -18,13 +19,21 @@ public class WordUp {
   
   // constructors
   public WordUp() {
-    this.arrayList = new ArrayList<>();
-    this.randomNumber = 5;
-    this.printMessage = "";
+//    this(null);
+//    this.arrayList = new ArrayList<>();
+    this(new ArrayList<>());
   }
   
-//  public WordUp(String variable) {
-//  }
+  public WordUp(ArrayList arrayList) {
+    this.arrayList = arrayList;
+    this.randomNumber = 5;
+    this.printMessage = "";
+    arrayList.add("puppy");
+    arrayList.add("kitten");
+    arrayList.add("duckling");
+    arrayList.add("snakelet");
+    arrayList.add("larvae");
+  }
   
   // getters
   // getArrayList, getRandomNumber, getPrintMessage
@@ -42,6 +51,10 @@ public class WordUp {
   
   // setters
   // setArrayList, setRandomNumber, setPrintMessage
+  public void setArrayList() {
+    setArrayList("");
+  }
+  
   public void setArrayList(String message) {
     // set/put values into the array list
 //    arrayList.set(1,"first");
@@ -88,49 +101,16 @@ public class WordUp {
    */
   public static void main(String[] args) {
     // create new object(s)
-    WordUp w = new WordUp();
     ArrayList l = new ArrayList<>();
-
-    // set array list
-    l.add("puppy");
-    l.add("kitten");
-    l.add("duckling");
-    l.add("laser");
-    l.add("larvae");
-    
-//    w.setArrayList("puppy");
-//    w.setArrayList("kitten");
+    WordUp w = new WordUp(l);
+//    WordUp w = new WordUp();
     
     // generate random number
-    if (l.size() > 0) {
-//    s = arrayList.size();
-    Integer a = 0; // Lower bound is the first value. First index in an array list is always 0.
-    Integer b = l.size() - 1; // Upper bound is the size of the array list - 1.
-//    int r = (int) (Math.random() * (b - a + 1)) + a; // where a & b are the lower and upper bounds respectively.
-    Integer r = (int) (Math.random() * (b - a + 1)) + a; // where a & b are the lower and upper bounds respectively.
-    // int r = (int) (Math.random() * (l.size() + 1)); // Simplified equation. Probably don't want to use this.
-    System.out.printf("Number is: %s%n%n",r);
-//      w.setRandomNumber();
-//      w.getRandomNumber();
-//      Integer r = w.getRandomNumber();
-      
-      System.out.println("RESULTS");
-      System.out.printf("List size is %s.%n",l.size());
-      
-      int order = 1; // Counter for the numbered list.
-  //    int order2 = 0;
-      for (Object message : l) { // Enhanced for loop is more efficient here.
-        System.out.printf("%s. %s%n",String.valueOf(order++),message); // We're adding 1 to the order value to make this human-readable since the index starts at 0.
-  //      System.out.printf("%s. %s%n",String.valueOf(order2++),message); // We're adding 1 to the order value to make this human-readable since the index starts at 0.
-      }
-      System.out.printf("Random number: %s%n",r);
-      System.out.printf("Random message: %s%n",l.get(r));
-    }
-    else {
-      System.out.println("RESULTS");
-      System.out.printf("List size is %s.%n",l.size());
-    }
+    Random rg = new Random();
+    Integer r = rg.nextInt(l.size());
+    
     // print array list message
+    System.out.printf("Random word: %s%n",l.get(r));
     
     // debugging
     
