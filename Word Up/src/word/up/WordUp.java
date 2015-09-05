@@ -68,49 +68,43 @@ public class WordUp {
 //}
   
   public void setRandomNumber() {
-    setRandomNumber(0,arrayList.size());
-  }
-  
-  public void setRandomNumber(Integer a, Integer b) {
     // set random number after computing it
-//    s = arrayList.size();
-    a = 0; // Lower bound is the first value. First index in an array list is always 0.
-    b = this.arrayList.size() - 1; // Upper bound is the size of the array list - 1.
-//    int r = (int) (Math.random() * (b - a + 1)) + a; // where a & b are the lower and upper bounds respectively.
-    this.randomNumber = (int) (Math.random() * (b - a + 1)) + a; // where a & b are the lower and upper bounds respectively.
-    // int r = (int) (Math.random() * (l.size() + 1)); // Simplified equation. Probably don't want to use this.
+    Random gen = new Random();
+    this.randomNumber = gen.nextInt(this.arrayList.size());
   }
   
-  public void setPrintMessage(int messageNumber, ArrayList<String> arrayList) {
-    // set print message value
-    System.out.printf("%s%n",arrayList.get(messageNumber));
-    this.printMessage = null;
+  public void setPrintMessage() {
+    this.printMessage = (String) arrayList.get(randomNumber); // Cast the object that is returned into String. There are other ways to do this, but this is simplest.
   }
   
-//  // other methods
-//  public void print() {
-//    print("");
-//  }
-  
-//  public void print(String x) {
-//    System.out.println(x);
-//  }
+  // other methods
+  public void randomNumber() {
+    setRandomNumber();
+    System.out.printf("Number: %s%n",getRandomNumber());
+  }
+
+  public void randomMessage() {
+//    getPrintMessage();
+    setPrintMessage();
+    System.out.printf("Word: \t%s%n",getPrintMessage());
+  }
 
   /**
    * @param args the command line arguments
    */
   public static void main(String[] args) {
     // create new object(s)
-    ArrayList l = new ArrayList<>();
-    WordUp w = new WordUp(l);
-//    WordUp w = new WordUp();
+//    ArrayList l = new ArrayList<>();
+//    WordUp w = new WordUp(l);
+    WordUp w = new WordUp();
     
     // generate random number
-    Random rg = new Random();
-    Integer r = rg.nextInt(l.size());
+    w.randomNumber();
     
-    // print array list message
-    System.out.printf("Random word: %s%n",l.get(r));
+    // print word
+//    w.setPrintMessage();
+//    System.out.printf("Word: \t%s%n",w.getPrintMessage());
+    w.randomMessage();
     
     // debugging
     
