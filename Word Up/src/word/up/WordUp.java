@@ -1,7 +1,6 @@
 package word.up;
 
-import java.util.ArrayList;
-import java.util.Random;
+import java.util.*;
 
 /**
  * Generates an array list & random number, then uses that number to print the corresponding value in the array list.
@@ -9,14 +8,12 @@ import java.util.Random;
  */
 public class WordUp {
   
-  // Variables
-  
+  // === Variables ===
   private final ArrayList arrayList;
   private Integer randomNumber;
   private String printMessage;
   
-  // Constructors
-  
+  // === Constructors ===
   /**
    * Create a new WordUp object with new array list.
    */
@@ -34,8 +31,7 @@ public class WordUp {
     this.printMessage = "";
   }
   
-  // Accessors
-  
+  // === Accessors ===
   /**
    * Returns value of arrayList as an array.
    * @return arrayList
@@ -60,8 +56,7 @@ public class WordUp {
     return printMessage;
   }
   
-  // Mutators
-  
+  // === Mutators ===
   /**
    * Set array list values.
    */
@@ -74,7 +69,6 @@ public class WordUp {
    * @param word String to add as array list value.
    */
   public void setArrayList(String word) {
-    // set/put values into the array list
     this.arrayList.add(word);
   }
   
@@ -82,7 +76,6 @@ public class WordUp {
    * Generate & set random number.
    */
   public void setRandomNumber() {
-    // set random number after computing it
     Random gen = new Random();
     this.randomNumber = gen.nextInt(this.arrayList.size());
   }
@@ -102,7 +95,7 @@ public class WordUp {
     this.printMessage = (String) arrayList.get(messageNumber); // Cast the object that is returned into String, since printMessage is a String variable.
   }
   
-  // Misc methods
+  // === Other methods ===
   
   /**
    * Generate & print a random number.
@@ -189,6 +182,14 @@ public class WordUp {
     
     // Print the word from the list.
     w.randomMessage();
+    
+    // Generate the random number.
+    w.randomNumber();
+    
+    // Print the word from the list.
+    w.randomMessage();
+    
+    // Thank the user.
     w.thanks();
   }
   
